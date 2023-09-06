@@ -36,7 +36,7 @@ export default class Form {
           inputElement.value = option.value;
           inputElement.id = option.attr.id;
           inputElement.classList.add('form-check-input', 'inputStyle'); // Add Bootstrap form-check-input class
-          inputElement.required = true; // Add the required attribute
+    
           const label = document.createElement('label');
           label.htmlFor = option.attr.id;
           label.classList.add('form-check-label', 'inputStyle'); // Add Bootstrap form-check-label class

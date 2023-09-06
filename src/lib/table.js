@@ -17,29 +17,38 @@ export default class Table {
     while (this.table.firstChild) {
       this.table.removeChild(this.table.firstChild);
     }
-
-    if (data.length === 0) {
+  
+    const totalItems = data.length; // Calculate the total items count
+  
+    if (totalItems === 0) {
       // If there's no data, do not create the table
+      document.querySelector('.total').innerHTML = 0; // Set total items count to zero
       return;
     }
-
+  
     const headerRow = document.createElement('tr');
     const firstItem = data[0];
-
+  
     for (const key in firstItem) {
-      if (firstItem.hasOwnProperty(key) && key!=='undefined') {
+      if (firstItem.hasOwnProperty(key) && key !== 'undefined') {
         const headerCell = document.createElement('th');
         headerCell.textContent = key;
         headerRow.appendChild(headerCell);
       }
     }
-
+    const editCell = document.createElement('th');
+    editCell.textContent = ''; // Empty text
+    editCell.colSpan = 2; // Set colspan to 2
+    headerRow.appendChild(editCell);
+  
     this.table.appendChild(headerRow);
-
+  
+    document.querySelector('.total').innerHTML = totalItems; // Update total items count
+  
     data.forEach((item) => {
       const dataRow = document.createElement('tr');
       for (const key in firstItem) {
-        if (firstItem.hasOwnProperty(key) && key!=='undefined') {
+        if (firstItem.hasOwnProperty(key) && key !== 'undefined') {
           const dataCell = document.createElement('td');
           dataCell.textContent = item[key];
           dataRow.appendChild(dataCell);
