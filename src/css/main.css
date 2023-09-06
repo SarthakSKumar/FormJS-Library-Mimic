@@ -1,0 +1,29 @@
+/* write css to design form/table */
+body {
+  max-width: 1000px;
+  margin: 30px auto;
+}
+
+.page-title {
+  display: flex;
+  place-content: center;
+  max-width: 100%;
+}
+
+.inputStyle {
+  padding: 20px;
+  margin: 20px;
+}
+
+.submitButton {
+  background-color: blue;
+  color: white;
+}
+
+.table {
+  font-size: 10px;
+}
+
+.employee-form {
+  border: 2px solid black;
+}
