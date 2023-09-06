@@ -24,4 +24,3 @@ Run following command in root directory
 ```
 npm run eslint
 ```
-# FormJS-Library-Mimic

@@ -1,4 +1,4 @@
-
+// table.js
 export default class Table {
   constructor(tableContainerId) {
     this.container = document.getElementById(tableContainerId);
@@ -7,7 +7,7 @@ export default class Table {
     this.container.appendChild(this.table);
     this.data = [];
 
-    this.onButtonClick = null; 
+    this.onButtonClick = null; // Callback function for button clicks
 
     this.renderTable([]);
   }
@@ -18,19 +18,28 @@ export default class Table {
       this.table.removeChild(this.table.firstChild);
     }
 
-    const headerRow = document.createElement('tr');
-    for (const key in data[0]) {
-      const headerCell = document.createElement('th');
-      headerCell.textContent = key;
-      headerRow.appendChild(headerCell);
+    if (data.length === 0) {
+      // If there's no data, do not create the table
+      return;
     }
-    headerRow.innerHTML += '<th>Edit</th><th>Delete</th>';
+
+    const headerRow = document.createElement('tr');
+    const firstItem = data[0];
+
+    for (const key in firstItem) {
+      if (firstItem.hasOwnProperty(key) && key!=='undefined') {
+        const headerCell = document.createElement('th');
+        headerCell.textContent = key;
+        headerRow.appendChild(headerCell);
+      }
+    }
+
     this.table.appendChild(headerRow);
 
     data.forEach((item) => {
       const dataRow = document.createElement('tr');
-      for (const key in item) {
-        if (item[key] !== undefined) {
+      for (const key in firstItem) {
+        if (firstItem.hasOwnProperty(key) && key!=='undefined') {
           const dataCell = document.createElement('td');
           dataCell.textContent = item[key];
           dataRow.appendChild(dataCell);
@@ -39,8 +48,8 @@ export default class Table {
 
       const editCell = document.createElement('td');
       const editButton = document.createElement('button');
-      editButton.textContent = 'Edit';
-      editButton.classList.add('btn', 'btn-warning');
+      editButton.textContent = 'Update';
+      editButton.classList.add('btn', 'btn-warning','bg-primary','text-white');
       editButton.dataset.userId = item.userId;
       editButton.addEventListener('click', () => {
         if (typeof this.onButtonClick === 'function') {

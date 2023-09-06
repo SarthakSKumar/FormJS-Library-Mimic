@@ -1,4 +1,4 @@
-
+// main.js
 import formData from './data/formData.js';
 import Form from './lib/form.js';
 import Storage from './lib/storage.js';
@@ -10,7 +10,7 @@ class Main {
     this.storage = new Storage(storageId);
     this.table = new Table(tableContainerId);
 
-    this.table.onButtonClick = this.handleTableButtonClick.bind(this); 
+    this.table.onButtonClick = this.handleTableButtonClick.bind(this); // Set the callback
 
     document.addEventListener('FormEvent', this.handleFormSubmission.bind(this));
 
@@ -20,21 +20,21 @@ class Main {
   }
 
   handleFormSubmission(event) {
-    
+    // Handle the form submission event, update storage and table as needed
     const submittedData = event.detail.data;
     submittedData.userId = this.generateUserId();
     submittedData.createdAt = this.generateCreatedAt();
     
     if (this.editingUserId !== null) {
-      
+      // Editing an existing user
       const edited = this.storage.editData(this.editingUserId, submittedData);
       if (edited) {
-        this.editingUserId = null; 
+        this.editingUserId = null; // Reset editing mode
       } else {
         console.log(`User with userId ${this.editingUserId} not found.`);
       }
     } else {
-      
+      // Adding a new user
       this.storage.addData(submittedData);
     }
 
@@ -42,7 +42,7 @@ class Main {
   }
 
   generateUserId() {
-    
+    // Generate a unique userId (You can use your own logic if needed)
     return Math.floor(100000 + Math.random() * 900000);
   }
 
@@ -54,7 +54,7 @@ class Main {
 
   handleTableButtonClick(userId, action) {
     if (action === 'Edit') {
-      
+      // Start editing the user
       this.editingUserId = userId;
       const userData = this.storage.getUserData(userId);
       this.formInstance.prefillForm(userData);

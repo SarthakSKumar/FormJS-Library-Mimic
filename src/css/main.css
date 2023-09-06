@@ -1,29 +1,67 @@
-/* write css to design form/table */
+/* Apply a background image to the entire HTML document */
 body {
-  max-width: 1000px;
-  margin: 30px auto;
+  background-image: url("/background.png");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-.page-title {
-  display: flex;
-  place-content: center;
+/* Style for a container that holds your content */
+.container {
+  max-width: 600px;
+  border-radius: 20px;
+  border: 2px solid black;
+  padding: 30px;
+  margin: 30px auto; /* Center the container horizontally */
+  background-color: white;
+}
+
+/* Style for a section that contains a scrollable table */
+.tableSection {
   max-width: 100%;
+  margin: auto auto;
 }
 
-.inputStyle {
-  padding: 20px;
-  margin: 20px;
-}
-
-.submitButton {
-  background-color: blue;
+.totalCount{
   color: white;
+  font-size:20px;
+  margin: 20px 20px;
 }
 
+th{
+  background-color: white;
+  color: black;
+}
+tr{
+  background-color: white;
+  color: black;
+}
+
+/* Style for a page title */
+.page-title {
+  text-align: center; /* Center-align the content */
+  max-width: 100%;
+  color: white;
+  margin-top: 20px
+}
+
+/* Style for input fields within forms */
+.inputStyle {
+  padding: 10px; /* Reduced padding for input fields */
+  margin: 10px 0; /* Adjusted vertical margin */
+}
+
+/* Style for tables */
 .table {
-  font-size: 10px;
+  font-size: 16px;
+  width: 100%; /* Make the table span the entire container */
+  border-collapse: collapse; /* Collapse table borders */
+  overflow-x: auto; /* Enable horizontal scrolling */
 }
 
+/* Style for the employee form */
 .employee-form {
   border: 2px solid black;
+  padding: 20px; /* Add padding to the form */
+  margin: 20px 0; /* Adjust vertical margin */
+  border-radius: 5px; /* Rounded corners for the form */
 }

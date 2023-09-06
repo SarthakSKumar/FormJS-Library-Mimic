@@ -232,7 +232,7 @@ const formData = [
     attr: {
       id: 'btnSubmit',
       name: 'btnSubmit',
-      className: 'btn btn-block btn-primary submit',
+      className: 'btn btn-block btn-primary submit text-white bg-primary',
       value: 'Submit',
       onclick: function () {
         // e, obj, array, dataObjArray you will get in function argument
@@ -248,7 +248,7 @@ const formData = [
     attr: {
       id: 'btnReset',
       name: 'btnReset',
-      className: 'btn btn-block btn-primary reset',
+      className: 'btn btn-block btn-primary reset ',
       value: 'Reset',
       onclick: function () {}, // e, obj, array, dataObjArray you will get in function argument
     },

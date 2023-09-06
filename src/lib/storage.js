@@ -1,4 +1,4 @@
-
+// storage.js
 export default class Storage {
   constructor(storageId) {
     this.storageId = storageId;
@@ -24,9 +24,9 @@ export default class Storage {
     if (index !== -1) {
       this.data[index] = { ...this.data[index], ...updatedData };
       this.setData(this.data);
-      return true; 
+      return true; // Return true to indicate success
     }
-    return false; 
+    return false; // Return false if user with userId was not found
   }
 
   deleteData(userId) {
@@ -34,9 +34,9 @@ export default class Storage {
     this.data = this.data.filter((user) => user.userId !== userId);
     if (this.data.length < initialLength) {
       this.setData(this.data);
-      return true; 
+      return true; // Return true to indicate success
     }
-    return false; 
+    return false; // Return false if user with userId was not found
   }
 
   getUserData(userId) {
