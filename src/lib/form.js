@@ -29,21 +29,35 @@ export default class Form {
         });
         formGroup.appendChild(select);
       } else if (field.type === 'radio' || field.type === 'checkbox') {
+        const fieldset = document.createElement('fieldset');
+        fieldset.classList.add('form-group'); // Add custom class for the group
+        const legend = document.createElement('h6');
+        legend.classList.add('form-legend'); // Add custom class for the legend
+        legend.textContent = field.label; // Set the legend title
+        fieldset.appendChild(legend);
+
         field.options.forEach((option) => {
+          const inputGroup = document.createElement('div');
+          inputGroup.classList.add('form-check'); // Add Bootstrap form-check class
+
           const inputElement = document.createElement('input');
-          inputElement.type = field.type;
+          inputElement.type = field.type; 
           inputElement.name = field.key;
           inputElement.value = option.value;
           inputElement.id = option.attr.id;
-          inputElement.classList.add('form-check-input', 'inputStyle'); // Add Bootstrap form-check-input class
-    
+          inputElement.classList.add('form-check-input'); // Add Bootstrap form-check-input class
+
           const label = document.createElement('label');
           label.htmlFor = option.attr.id;
-          label.classList.add('form-check-label', 'inputStyle'); // Add Bootstrap form-check-label class
-          label.innerText = option.innerText;
-          formGroup.appendChild(inputElement);
-          formGroup.appendChild(label);
+          label.classList.add('form-check-label'); // Add Bootstrap form-check-label class
+          label.textContent = option.innerText;
+
+          inputGroup.appendChild(inputElement);
+          inputGroup.appendChild(label);
+          fieldset.appendChild(inputGroup);
         });
+
+        formGroup.appendChild(fieldset);
       } else {
         const input = document.createElement('input');
         input.type = field.type;
