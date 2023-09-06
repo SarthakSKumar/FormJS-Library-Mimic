@@ -2,14 +2,14 @@
 const formData = [
   {
     type: 'hidden',
-    key: 'userId',
+    key: 'UUID',
     label: 'User Id',
     unique: true,
     getValue: function (obj) {
       // when user will use type hidden in formData object at that time we don't have to add any input element in form but we should notify or give error to user in console if user has not mentioned getValue function.
       // getValue function will only have current form data in form of object key value pair
       // first condition is to check if userId is present then use it because we only want to set userId for new records
-      return obj.userId || Math.floor(100000 + Math.random() * 900000);
+      return obj.UUID || Math.floor(100000 + Math.random() * 900000);
     },
   },
   {

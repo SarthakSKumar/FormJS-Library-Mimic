@@ -20,7 +20,7 @@ export default class Storage {
   }
 
   editData(userId, updatedData) {
-    const index = this.data.findIndex((user) => user.userId === userId);
+    const index = this.data.findIndex((user) => user.UUID === userId);
     if (index !== -1) {
       this.data[index] = { ...this.data[index], ...updatedData };
       this.setData(this.data);
@@ -31,7 +31,7 @@ export default class Storage {
 
   deleteData(userId) {
     const initialLength = this.data.length;
-    this.data = this.data.filter((user) => user.userId !== userId);
+    this.data = this.data.filter((user) => user.UUID !== userId);
     if (this.data.length < initialLength) {
       this.setData(this.data);
       return true; // Return true to indicate success
@@ -40,6 +40,6 @@ export default class Storage {
   }
 
   getUserData(userId) {
-    return this.data.find((user) => user.userId === userId);
+    return this.data.find((user) => user.UUID === userId);
   }
 }

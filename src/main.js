@@ -22,7 +22,7 @@ class Main {
   handleFormSubmission(event) {
     // Handle the form submission event, update storage and table as needed
     const submittedData = event.detail.data;
-    submittedData.userId = this.generateUserId();
+    submittedData.UUID = this.generateUserId();
     submittedData.createdAt = this.generateCreatedAt();
     
     if (this.editingUserId !== null) {
@@ -42,8 +42,16 @@ class Main {
   }
 
   generateUserId() {
-    // Generate a unique userId (You can use your own logic if needed)
-    return Math.floor(100000 + Math.random() * 900000);
+    function uuidv4() {
+      return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'
+      .replace(/[xy]/g, function (c) {
+          const r = Math.random() * 16 | 0, 
+              v = c == 'x' ? r : (r & 0x3 | 0x8);
+          return v.toString(16);
+      });
+  }
+    const uuid = uuidv4()
+    return uuid;
   }
 
   generateCreatedAt() {

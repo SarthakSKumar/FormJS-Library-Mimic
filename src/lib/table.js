@@ -59,10 +59,10 @@ export default class Table {
       const editButton = document.createElement('button');
       editButton.textContent = 'Update';
       editButton.classList.add('btn', 'btn-warning','bg-primary','text-white');
-      editButton.dataset.userId = item.userId;
+      editButton.dataset.UUID = item.UUID;
       editButton.addEventListener('click', () => {
         if (typeof this.onButtonClick === 'function') {
-          this.onButtonClick(item.userId, 'Edit');
+          this.onButtonClick(item.UUID, 'Edit');
         }
       });
       editCell.appendChild(editButton);
@@ -72,10 +72,10 @@ export default class Table {
       const deleteButton = document.createElement('button');
       deleteButton.textContent = 'Delete';
       deleteButton.classList.add('btn', 'btn-danger');
-      deleteButton.dataset.userId = item.userId;
+      deleteButton.dataset.UUID = item.UUID;
       deleteButton.addEventListener('click', () => {
         if (typeof this.onButtonClick === 'function') {
-          this.onButtonClick(item.userId, 'Delete');
+          this.onButtonClick(item.UUID, 'Delete');
         }
       });
       deleteCell.appendChild(deleteButton);
